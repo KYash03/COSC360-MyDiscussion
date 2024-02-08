@@ -1,0 +1,73 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+nav {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+nav h1{
+    color: rgb(255, 98, 0);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.5em 0;
+}
+
+.main-content {
+    flex-grow: 0.8;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    padding: 1em;
+    background-color: #eee;
+}
+
+header input[type="search"] {
+    flex: 1;
+    margin-right: 1em;
+}
+
+main {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.filter-dropdown {
+    padding: 0.5em;
+    background-color: #ddd;
+    margin: 1em;
+}
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    margin: 1em;
+    padding: 1em;
+}
+
+footer {
+    background-color: #eee;
+    padding: 1em;
+    text-align: center;
+}
