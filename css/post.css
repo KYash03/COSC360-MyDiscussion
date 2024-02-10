@@ -1,0 +1,134 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+nav {
+  width: 10rem;
+  background-color: #333;
+  color: white;
+  padding: 1em;
+}
+nav h1 {
+  color: rgb(255, 98, 0);
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 0.5em 0;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  padding: 1em;
+  background-color: #eee;
+}
+
+header input[type="search"] {
+  flex: 1;
+  padding: 0.5em;
+  margin-right: 1em;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+}
+header button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 25px;
+  background-color: #0079d3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+header button:hover {
+  background-color: #005999;
+}
+
+main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.filter-dropdown {
+  padding: 0.5em;
+  background-color: #ddd;
+  margin: 1em;
+}
+
+.post {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  margin: 1em;
+  padding: 1em;
+}
+
+footer {
+  background-color: #eee;
+  padding: 1em;
+  text-align: center;
+}
+
+.comments-section {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.comment {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-comment textarea {
+  width: calc(100% - 1em);
+  margin-top: 1em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 100px;
+}
+
+.add-comment button {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-comment button:hover {
+  background-color: #0056b3;
+}
