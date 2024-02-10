@@ -20,7 +20,7 @@ legend{
 }
 
 input[type=submit]{
-    background-color: #eee;
+    background-color: #333;
     color:rgb(255, 98, 0);
     font-size: 1.2em;
     border: 1pt solid #333;
@@ -28,13 +28,13 @@ input[type=submit]{
 #login{
     float:left;
     display: flex;
-    background-color: #333;
+    background-color: #eee;
     margin:2em 2em 2em 15em;
     
 }
 #signup{
     display: flex;
-    background-color: #333;
+    background-color: #eee;
     float:right;
     margin:2em 15em 2em 2em;
 
