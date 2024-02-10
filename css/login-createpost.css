@@ -6,11 +6,11 @@ body {
 header {
     display: flex;
     padding: 1em;
-    background-color: #eee;
+    background-color: #333;
 }
 form{
     padding: 1em;
-    color:white;
+    color:#eee;
     text-align:center;
 }
 legend{
@@ -23,6 +23,7 @@ input[type=submit]{
     background-color: #eee;
     color:rgb(255, 98, 0);
     font-size: 1.2em;
+    border: 1pt solid #333;
 }
 #login{
     float:left;
@@ -36,6 +37,7 @@ input[type=submit]{
     background-color: #333;
     float:right;
     margin:2em 15em 2em 2em;
+
 }
 #createpost{
     margin:2em;
