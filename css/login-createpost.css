@@ -1,33 +1,58 @@
 body {
-    margin-top: 2em;
-    padding: 1em;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
-main {
-    flex-grow: 1;
-    overflow-y: auto;
-}
+
 header {
     display: flex;
     padding: 1em;
     background-color: #eee;
 }
 form{
-    margin-top: 1em;
     padding: 1em;
-    width: 30%;
-    background-color: #333;
     color:white;
+    text-align:center;
 }
 legend{
     font-weight: bold;
     color:rgb(255, 98, 0);
     font-size: 1.5em;
 }
-form p{
-    text-align:center;
-}
+
 input[type=submit]{
     background-color: #eee;
     color:rgb(255, 98, 0);
+    font-size: 1.2em;
+}
+#login{
+    float:left;
+    display: flex;
+    background-color: #333;
+    margin:2em 2em 2em 15em;
+    
+}
+#signup{
+    display: flex;
+    background-color: #333;
+    float:right;
+    margin:2em 15em 2em 2em;
+}
+#createpost{
+    margin:2em;
+    display: flex;
+    background-color: #333;
+    width:60%;
+    
+
+}
+#createpost form{
+    width:100%;
+    text-align: left;
+}
+#createpost textarea{
+    width: 80%;
+}
+#createpost input[type=text]{
+    width: 80%;
+    height:20%;
 }

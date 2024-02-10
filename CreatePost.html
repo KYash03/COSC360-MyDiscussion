@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/login-createpost.css">
     <title>Create a Post</title>
 </head>
 
@@ -15,23 +15,29 @@
 
     </header>
     <main>
-        <form method="post" action ="#">
-            <fieldset>
-                <legend>Create Post</legend> 
-                <p>
-                <label>Title:</label>
-                <input type="text" id="postTitle" name="postTitle" required>
-                </p>
-                <p>
-                <label for="postContent">Content:</label>
-                <textarea id="postContent" name="postContent" rows="8" required></textarea>
-                </p>
-                <button type="submit">Submit Post</button>
+        <div id="createpost">
+            <form method="post" action ="#">
+                <fieldset>
+                    <legend>Create Post</legend> 
+                    <p>
+                    <label>Title:</label>
+                    </p>
+                    <p>
+                    <input type="text" id="postTitle" name="postTitle" required>
+                    </p>
+                    <p>
+                    <label for="postContent">Content:</label>
+                    </p>
+                    <p>
+                    <textarea id="postContent" name="postContent" rows="8" required></textarea>
+                    </p>
+                    <input type="submit"/>
 
-            </fieldset>
+                </fieldset>
 
 
-        </form>
+            </form>
+        </div>
     </main>
 
     
