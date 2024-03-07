@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded",function(){
         }
         if(hasNumbers(name)){
             isFormValid =false;
+            name.classList.add('highlight');
         }
         
         if(!lastname.value.trim()){
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded",function(){
         }
         if(hasNumbers(lastname)){
             isFormValid =false;
+            lastname.classList.add('highlight');
         }
         if(!email.value.trim()){
             username.classList.add('highlight');
@@ -133,6 +135,9 @@ document.addEventListener("DOMContentLoaded",function(){
         }
     }
 
+    name.addEventListener('input',removeHighlight);
+    lastname.addEventListener('input',removeHighlight);
+    email.addEventListener('input',removeHighlight);
     username.addEventListener('input',removeHighlight);
-    description.addEventListener('input',removeHighlight);
+    password.addEventListener('input',removeHighlight);
 });
