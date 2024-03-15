@@ -29,14 +29,16 @@ input[type=submit]{
     float:left;
     display: flex;
     background-color: #eee;
-    margin:2em 2em 2em 15em;
+    margin:2em ;
+    flex:1;
     
 }
 #signup{
     display: flex;
     background-color: #eee;
     float:right;
-    margin:2em 15em 2em 2em;
+    margin:2em;
+    flex:1;
 
 }
 #createpost{
@@ -66,4 +68,12 @@ a:visited{
 }
 .highlight{
     background-color: red;
+}
+@media only screen and (max-width: 600px) {
+    #login,
+    #signup {
+        flex-direction: column;
+        width:100%;
+    }
+
 }

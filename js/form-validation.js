@@ -8,13 +8,11 @@ document.addEventListener("DOMContentLoaded",function(){
         let isFormValid = true;
 
         if(!username.value.trim()){
-            // Add the function : draw from the database, check if username exists.
             username.classList.add('highlight');
             isFormValid = false;
 
         }
         if(!password.value.trim()){
-            //Add the function : check if password matches
             password.classList.add('highlight');
             isFormValid = false;
 
@@ -83,7 +81,6 @@ document.addEventListener("DOMContentLoaded",function(){
             list.append("E-mail");
 
         }
-        //if email exists in database, form invalid.
 
         if(!username.value.trim()){
             username.classList.add('highlight');
@@ -91,8 +88,6 @@ document.addEventListener("DOMContentLoaded",function(){
             list.append("username");
 
         }
-        //if username exists in database,form invalid.
-
         if(!password.value.trim()){
             password.classList.add('highlight');
             isFormFilled = false;
