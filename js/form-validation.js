@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
         }
 
-
-
-
     });
     function removeHighlight(event){
         if(event.target.value.trim()){
