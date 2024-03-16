@@ -1,7 +1,21 @@
 <?php
 require_once 'path/to/config/db_config.php';
-?>
+session_start();
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['password'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    // we will have to add database code here to check if the username and password are valid
+    if ($username === "admin" && $password === "password") {
+        $_SESSION['loggedin'] = true;
+        echo "Logged in successfully";
+        exit();
+    } else {
+        echo "Invalid username or password.";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +26,6 @@ require_once 'path/to/config/db_config.php';
     <title>Log In</title>
     <link rel="stylesheet" href="css/login-createpost.css">
 </head>
-
 
 <body>
     <header>
@@ -36,8 +49,6 @@ require_once 'path/to/config/db_config.php';
                     <input type ="submit"/>
                 </fieldset>
             </form>
-            
-
         </div>
 
         <div id = "signup">
@@ -69,12 +80,9 @@ require_once 'path/to/config/db_config.php';
                         <input type = "checkbox" name = "accept">
                     </p>
                     <input type ="submit"/>
-
                 </fieldset>
             </form>
         </div>
     </main>
-
 </body>
-
 </html>
