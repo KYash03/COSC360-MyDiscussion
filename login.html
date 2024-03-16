@@ -1,34 +1,3 @@
-<?php
-try {
-    // Database connection string
-    $connString = "mysql:host=localhost;dbname=db_86471588;charset=utf8"; // Replace 'db_yourCWL' with your actual database name
-    $user = "86471588";  // Replace 'yourStudentID' with your actual database username
-    $pass = "86471588";  // Replace 'yourMySQLPassword' with your actual database password
-
-    // Create a PDO instance (connect to the database)
-    $pdo = new PDO($connString, $user, $pass);
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // SQL query
-    $sql = "SELECT * FROM Categories ORDER BY CategoryName";  // Make sure table name and columns are correct
-    // Execute the query and get the result set
-    $result = $pdo->query($sql);
-
-    // Fetch and display each row of the result set
-    while ($row = $result->fetch()) {
-        echo $row['ID'] . " - " . $row['CategoryName'] . "<br/>";
-    }
-
-    // Close the database connection
-    $pdo = null;
-} catch (PDOException $e) {
-    // If an error occurs, the script stops and displays the error message
-    die("Connection failed: " . $e->getMessage());
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
