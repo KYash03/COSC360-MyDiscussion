@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }
 
     username.addEventListener('input',removeHighlight);
-    description.addEventListener('input',removeHighlight);
+    password.addEventListener('input',removeHighlight);
 });
 
 document.addEventListener("DOMContentLoaded",function(){

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login-createpost.css">
+    <script src = "js/form-validation2.js"></script>
     <title>Create a Post</title>
 </head>
 
@@ -16,7 +17,7 @@
     </header>
     <main>
         <div id="createpost">
-            <form method="post" action ="#">
+            <form method="post" id="posting-form" action ="#">
                 <fieldset>
                     <legend>Create Post</legend> 
                     <p>
@@ -26,7 +27,6 @@
                     <input type="text" id="postTitle" name="postTitle" required>
                     </p>
                     <p>
-                    <label for="postContent">Content:</label>
                     </p>
                     <p>
                     <textarea id="postContent" name="postContent" rows="8" required></textarea>

@@ -1,79 +1,146 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
 header {
-    display: flex;
-    padding: 1em;
-    background-color: #333;
-}
-form{
-    padding: 1em;
-    color:#333;
-    text-align:center;
-}
-legend{
-    font-weight: bold;
-    color:rgb(255, 98, 0);
-    font-size: 1.5em;
+    display: block;
+    padding: 1em 0;
+    background-color:#333;
+    color: rgb(255, 98, 0);
 }
 
-input[type=submit]{
-    background-color: #333;
-    color:rgb(255, 98, 0);
-    font-size: 1.2em;
-    border: 1pt solid #333;
+h1 {
+    margin: 0;
+    font-size: 2em;
+    color: rgb(255, 98, 0);
 }
-#login{
-    float:left;
-    display: flex;
-    background-color: #eee;
-    margin:2em ;
-    flex:1;
-    
-}
-#signup{
-    display: flex;
-    background-color: #eee;
-    float:right;
-    margin:2em;
-    flex:1;
 
-}
-#createpost{
-    margin:2em;
+main {
     display: flex;
-    background-color: #eee;
-    width:60%;
-    
-
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em 0;
 }
-#createpost form{
-    width:100%;
+
+#login, #signup {
+    width: calc(50% - 4em);
+    margin: 2em;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+form {
+    padding: 2em;
+    color: #333;
     text-align: left;
 }
-#createpost textarea{
-    width: 80%;
+
+fieldset {
+    border: none;
 }
-#createpost input[type=text]{
-    width: 80%;
-    height:20%;
+
+legend {
+    font-weight: bold;
+    color: rgb(255, 98, 0);
+    font-size: 1.5em;
+    margin-bottom: 1em;
 }
-a:link{
+
+label {
+    display: block;
+    margin-bottom: .5em;
+    color: #264653;
+}
+
+input, input[type=submit] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    background-color: rgb(255, 98, 0);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type=submit]:hover {
+    background-color: #264653;
+}
+
+a:link, a:visited {
+    color: #ffffff;
     text-decoration: none;
 }
-a:visited{
-    color:rgb(255, 98, 0);
-}
-.highlight{
-    background-color: red;
-}
-@media only screen and (max-width: 600px) {
-    #login,
-    #signup {
-        flex-direction: column;
-        width:100%;
-    }
 
+
+
+#createpost {
+    width: 60%; 
+    margin: 2em auto; 
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 2em; 
+}
+
+#createpost form {
+    width: 100%;
+}
+
+#createpost label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #264653; 
+}
+#createpost input[type="text"],
+#createpost textarea {
+    width: calc(100% - 22px); /* Adjust width to account for padding and borders */
+    padding: 10px;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Rounded corners for input and textarea */
+}
+
+#createpost textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    #createpost {
+        width: 80%; /* Adjust form width for tablet devices */
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #createpost {
+        width: 90%; /* Adjust form width for mobile devices */
+        margin: 20px auto; /* Increase margin on smaller screens */
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    #login, #signup {
+        width: calc(100% - 4em);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #login, #signup {
+        flex-direction: column;
+        width: 90%;
+        margin: 2em auto;
+    }
 }
