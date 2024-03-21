@@ -1,5 +1,5 @@
 <?php
-require_once 'path/to/config/db_config.php';
+// require_once 'path/to/config/db_config.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['password'])) {
