@@ -3,11 +3,10 @@ require_once 'path/to/db_connection.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Use the openCon function from the db_connection file
     $pdo = OpenCon();
 
     // Prepare an insert statement
-    $sql = "INSERT INTO posts (title, content) VALUES (:title, :content)";
+    $sql = "INSERT INTO posts (title, content) VALUES (?,?)";
     
     try {
         // Prepare the statement
