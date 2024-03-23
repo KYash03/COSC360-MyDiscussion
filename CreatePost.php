@@ -6,15 +6,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = OpenCon();
 
     
-    $post_sql = "INSERT INTO posts (title, content) VALUES (?,?)";
+    $post_sql = "INSERT INTO posts (postTitle,postContent,categoryID) VALUES (?,?,?)";
     
     try {
         // Prepare the statement
         $stmt = $pdo->prepare($post_sql);
-        
+        //Add statement for postDate as well
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
-        $stmt->execute([$postTitle, $postContent]);
+        $categoryID= $_POST['category']
+        $stmt->execute([$postTitle, $postContent,$categoryID]);
 
         
         echo "Post created successfully.";
@@ -61,6 +62,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>
                     <textarea id="postContent" name="postContent" rows="8" required></textarea>
                     </p>
+                    <label for="category">Category:</label>
+                        <select id="category" name="category" size="1" required>
+                        <option value="1">News & Current Events</option>
+                        <option value="2">Technology & Science</option>
+                        <option value="3">Entertainment & Media</option>
+                        <option value="4">Gaming</option>
+                        <option value="5">Lifestyle & Health</option>
+                        <option value="6">Arts & Creativity</option>
+                        <option value="7">Education & Careers</option>
+                        <option value="8">Hobbies & Interests</option>
+                        <option value="9">Sports & Fitness</option>
+                        <option value="10">Community & Social</option>
+                        </select>
                     <input type="submit"/>
 
                 </fieldset>
