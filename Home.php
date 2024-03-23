@@ -1,3 +1,34 @@
+<?php
+$posts=[];
+
+//require_once 'path/to/db_connection.php';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $pdo = OpenCon();
+
+    $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";;
+    
+    try {
+        // Prepare the statement
+        $result = $pdo->query($sql);
+        while($row = $result->fetch()){
+            $posts[] = $row;
+
+        }
+
+
+        
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+    // Close the connection
+    $pdo = null;
+}
+?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,17 +55,13 @@
             </header>
             <main>
                 <div class="filter-dropdown">Sort by</div>
-                <div class="post">
-                    <h2>Post Title 1</h2>
-                    <p>This is the content of the first post...</p>
-                    <p class="username">Posted by: Username1</p>
-                </div>
-                <div class="post">
-                    <h2>Post Title 2</h2>
-                    <p>This is the content of the second post...</p>
-                    <p class="username">Posted by: Username1</p>
-                </div>
-                <!-- Repeat for more posts -->
+                <?php foreach ($posts as $post): ?>
+                    <div class="post">
+                        <p class="username">Posted by: <?php echo htmlspecialchars($post['username']); ?></p>
+                        <h2><?php echo htmlspecialchars($post['title']); ?></h2>
+                        <p><?php echo htmlspecialchars($post['content']); ?></p>
+                    </div>
+                    <?php endforeach; ?>
             </main>
             <footer>
                 <p>Talks@UBC</p>

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = null;
 }
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

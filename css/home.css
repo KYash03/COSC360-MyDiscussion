@@ -101,3 +101,9 @@ footer {
     padding: 1em;
     text-align: center;
 }
+.username {
+    font-style: italic;
+    color: rgb(255, 98, 0);
+    margin-top: 1em;
+    font-size: 0.9em;
+}
