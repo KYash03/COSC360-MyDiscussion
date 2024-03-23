@@ -23,7 +23,13 @@
             <button id="new-post-btn">New Post</button>
         </header>
         <main>
-            <div class="filter-dropdown">Sort by</div>
+            <!-- Dropdown for sorting -->
+            <select class="filter-dropdown" onchange="sortPosts(this.value);">
+                <option value="">Sort by</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="most_popular">Most Popular</option>
+            </select>           
             <!-- Dynamic posts will be loaded here -->
             <div class="post">
                 <h2>Post Title 1</h2>

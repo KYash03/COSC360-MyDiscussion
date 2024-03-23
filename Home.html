@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Homepage</title>
-        <link rel="stylesheet" href="css/home.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
 <body>
-    <div class="container">
-        <nav>
-            <h1> Talks@UBC </h1>
-            <!-- Navigation links go here -->
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="LogIn.html">Login</a></li>
-                <li><a href = "Profile.html">Profile</a></li>
-            </ul>
-        </nav>
-        <div class="main-content">
-            <header>
-                <input type="search" placeholder="  Search">
-                <button href = ""> Search </button>
-            </header>
-            <main>
-                <div class="filter-dropdown">Sort by</div>
-                <div class="post">
-                    <h2>Post Title 1</h2>
-                    <p>This is the content of the first post...</p>
-                </div>
-                <div class="post">
-                    <h2>Post Title 2</h2>
-                    <p>This is the content of the second post...</p>
-                </div>
-                <!-- Repeat for more posts -->
-            </main>
-            <footer>
-                <p>Talks@UBC</p>
-            </footer>
-        </div>
+<div class="container">
+    <nav>
+        <h1> Talks@UBC </h1>
+        <!-- Navigation links go here -->
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="LogIn.html">Login</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <header>
+            <input type="search" placeholder="Search">
+            <button>Search</button>
+        </header>
+        <main>
+            
+            <!-- Dropdown for sorting -->
+            <select class="filter-dropdown" onchange="sortPosts(this.value);">
+                <option value="">Sort by</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="most_popular">Most Popular</option>
+            </select>
+
+            <div class="post">
+                <h2>Post Title 1</h2>
+                <p>This is the content of the first post...</p>
+            </div>
+            <div class="post">
+                <h2>Post Title 2</h2>
+                <p>This is the content of the second post...</p>
+            </div>
+            <!-- Repeat for more posts -->
+        </main>
+        <footer>
+            <p>Talks@UBC</p>
+        </footer>
     </div>
+</div>
+<script>
+// Example function to handle sorting - you'll need to implement the actual logic
+function sortPosts(sortBy) {
+    console.log("Sort by:", sortBy);
+    // Implement sorting logic here. This might involve AJAX requests to your server,
+    // manipulating the DOM to reorder posts, etc.
+}
+</script>
 </body>
 </html>
