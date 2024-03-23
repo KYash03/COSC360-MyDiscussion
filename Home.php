@@ -7,6 +7,8 @@ $posts=[];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = OpenCon();
 
+    //need to add a join so we can access username, posts table only have userID
+
     $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";;
     
     try {
@@ -57,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="filter-dropdown">Sort by</div>
                 <?php foreach ($posts as $post): ?>
                     <div class="post">
+                        
                         <p class="username">Posted by: <?php echo htmlspecialchars($post['username']); ?></p>
                         <h2><?php echo htmlspecialchars($post['title']); ?></h2>
                         <p><?php echo htmlspecialchars($post['content']); ?></p>
