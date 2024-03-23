@@ -1,0 +1,96 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+nav {
+    width: 10rem;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+
+nav h1{
+    color: rgb(255, 98, 0);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.5em 0;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    padding: 1em;
+    background-color: #eee;
+    align-items: center;
+}
+
+header input[type="search"], header button {
+    flex: 1;
+    padding: 0.5em;
+    margin-right: 1em;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+}
+
+#new-post-btn {
+    margin-left: auto; /* Pushes the new post button to the far right */
+}
+
+header button {
+    background-color: #0079d3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #005999;
+}
+
+main {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.filter-dropdown {
+    padding: 0.5em;
+    background-color: #ddd;
+    margin: 1em;
+}
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    margin: 1em;
+    padding: 1em;
+}
+
+footer {
+    background-color: #eee;
+    padding: 1em;
+    text-align: center;
+}
