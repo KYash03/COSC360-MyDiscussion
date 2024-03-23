@@ -5,19 +5,17 @@ require_once 'path/to/db_connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = OpenCon();
 
-    // Prepare an insert statement
-    $sql = "INSERT INTO posts (title, content) VALUES (?,?)";
+    
+    $post_sql = "INSERT INTO posts (title, content) VALUES (?,?)";
     
     try {
         // Prepare the statement
-        $stmt = $pdo->prepare($sql);
+        $stmt = $pdo->prepare($post_sql);
         
-        // Bind the parameters
-        $stmt->bindParam(':title', $_POST['postTitle'], PDO::PARAM_STR);
-        $stmt->bindParam(':content', $_POST['postContent'], PDO::PARAM_STR);
-        
-        // Execute the statement
-        $stmt->execute();
+        $postTitle = $_POST['postTitle'];
+        $postContent = $_POST['postContent'];
+        $stmt->execute([$postTitle, $postContent]);
+
         
         echo "Post created successfully.";
     } catch(PDOException $e) {
