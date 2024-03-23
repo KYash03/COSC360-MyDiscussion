@@ -8,10 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = OpenCon();
 
     //need to add a join so we can access username, posts table only have userID
+    //need to add a join to category table through categoryID
 
     // $sql = "SELECT posts.postID,posts.postTitle,posts.postDate,user.username FROM posts LEFT JOIN user ON posts.userID =user.userID ORDER BY postDate DESC LIMIT 20;
 
-    $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";;
+    $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";
+    
     
     try {
         // Prepare the statement
@@ -62,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="post">
                     <h2><?php echo htmlspecialchars($post['postTitle']); ?></h2>
                     <p><?php echo htmlspecialchars($post['postContent']); ?></p>
+                    <p class="post-category">Category: <span class="category"><?php echo htmlspecialchars($post['category'])</span></p>
                     <p class="username">Posted by: <?php echo htmlspecialchars($post['username']); ?></p>
                     <span class = "post-date"> <?php echo htmlspecialchars($post['postDate']); ?></span>
                 <?php endforeach; ?>
