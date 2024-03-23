@@ -1,13 +1,19 @@
 <?php
 // require_once 'path/to/config/db_config.php';
 session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['password'])) {
+// login checks
+if ($_SERVER["REQUEST_METHOD"] == "POST" && && isset($_POST['action']) && $_POST['action'] == 'login') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    // we will have to add database code here to check if the username and password are valid
-    if ($username === "admin" && $password === "password") {
+    $login_sql = “SELECT password FROM user WHERE username =  ?“;
+    $stmt = $pdo -> prepare($login_sql);
+    $stmt -> execute([$username]);
+    $user_result= $stmt-> fetch()
+
+    if (!$user_result)
+        echo "Username does not exist"
+    else if ($password === $user_result['password'])) {
         $_SESSION['loggedin'] = true;
         echo "Logged in successfully";
         exit();
@@ -15,6 +21,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['pa
         echo "Invalid username or password.";
     }
 }
+
+//signup email check & posting data to database
+if ($_SERVER["REQUEST_METHOD"] == "POST" && && isset($_POST['action']) && $_POST['action'] == 'sign-up') {
+    $name = trim($_POST['name']);
+    $lastname = trim($_POST['lastname']);
+    $email = trim($_POST['email']);
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    $signup_sql1 = “SELECT COUNT(email) FROM user  WHERE email = ?”;
+    $stmt = $pdo->prepare($signup_sql1);
+    $signup_result = $stmt->execute([$email]);
+
+    if ($signup_result == 1) {
+        echo "This email is already used.";
+    } else {
+        // Inserting new user data into the database
+        $signup_sql2 = "INSERT INTO user (name, lastname, email, username, password) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($signup_sql2);
+        $success = $stmt->execute([$name, $lastname, $email, $username, $password]); 
+
+        if ($success) {
+            echo "Signup successful!";
+        } else {
+            echo "Unexpected error, please try again.";
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['pa
         <div id = "login"> 
             <form  id="login-form" method ="post" action ="#">
                 <fieldset>
+                    <input type="hidden" name="action" value="login"/>
                     <legend>Log In</legend>
                     <p>
                     <label>Username : </label>
@@ -54,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['pa
         <div id = "signup">
             <form id="signup-form" method ="post" action ="#">
                 <fieldset>
+                    <input type="hidden" name="action" value="sign-up"/>
                     <legend>Sign Up</legend>
                     <p>
                         <label>First Name : </label>
