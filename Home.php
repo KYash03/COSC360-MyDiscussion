@@ -60,12 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="filter-dropdown">Sort by</div>
                 <?php foreach ($posts as $post): ?>
                     <div class="post">
-                        
-                        <p class="username">Posted by: <?php echo htmlspecialchars($post['username']); ?></p>
-                        <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                        <p><?php echo htmlspecialchars($post['content']); ?></p>
-                    </div>
-                    <?php endforeach; ?>
+                    <h2><?php echo htmlspecialchars($post['postTitle']); ?></h2>
+                    <p><?php echo htmlspecialchars($post['postContent']); ?></p>
+                    <p class="username">Posted by: <?php echo htmlspecialchars($post['username']); ?></p>
+                    <span class = "post-date"> <?php echo htmlspecialchars($post['postDate']); ?></span>
+                <?php endforeach; ?>
             </main>
             <footer>
                 <p>Talks@UBC</p>
