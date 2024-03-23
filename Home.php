@@ -9,6 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //need to add a join so we can access username, posts table only have userID
 
+    // $sql = "SELECT posts.postID,posts.postTitle,posts.postDate,user.username FROM posts LEFT JOIN user ON posts.userID =user.userID ORDER BY postDate DESC LIMIT 20;
+
     $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";;
     
     try {

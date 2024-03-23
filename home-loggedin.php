@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //need to add a join so we can access username, posts table only have userID
 
-    $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";;
+    $sql = "SELECT * FROM posts ORDER BY postDate DESC LIMIT 20";
     
     try {
         // Prepare the statement
@@ -53,7 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <header>
             <input type="search" placeholder="Search">
             <button>Search</button>
+            <a href="CreatePost.php">
             <button id="new-post-btn">New Post</button>
+            </a>
         </header>
         <main>
             <div class="filter-dropdown">Sort by</div>

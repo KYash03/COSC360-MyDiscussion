@@ -107,3 +107,9 @@ footer {
     margin-top: 1em;
     font-size: 0.9em;
 }
+.post-date {
+    color: #999; /* A lighter, less intrusive color for the date */
+    font-size: 0.8em; /* Slightly smaller font size for a subtle look */
+    margin-bottom: 1em; /* Space between the date and the content or username */
+    display: block; /* Ensure it's displayed as a block element for proper spacing */
+}
