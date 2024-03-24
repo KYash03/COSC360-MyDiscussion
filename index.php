@@ -14,4 +14,11 @@ $pathParts = explode('/', $path);
 // first part of the path is assumed to be the page request
 $pageRequested = $pathParts[0] ?? null;
 
+if (!in_array($pageRequested, $validPages)) {
+    http_response_code(404);
+    echo "<h1>404 Page Not Found</h1>";
+    echo "<p>The page you requested does not exist.</p>";
+    exit;
+}
+
 ?>
