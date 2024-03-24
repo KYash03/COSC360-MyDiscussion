@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
-        $_SESSION['userID']= $userID;
+        $_SESSION['userID']= $user_result['userID'];
 
         header("location:http://localhost/COSC360-MyDiscussion/home-loggedin.php");
         exit();
