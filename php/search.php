@@ -4,8 +4,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 
-include '../db_connection.php';
+require_once '../db_connection.php';
 
+$pdo = OpenCon();
 // Retrieve the search query from GET parameters
 $searchQuery = isset($_GET['searchQuery']) ? $_GET['searchQuery'] : '';
 
