@@ -1,20 +1,21 @@
 <?php
-// require_once 'path/to/config/db_config.php';
+require_once 'db_connection.php';
 session_start();
 // login checks
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pdo = openCon()
+    $pdo = openCon();
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
     $login_sql = "SELECT adminPass FROM admin WHERE adminUser =  ?";
     $stmt = $pdo -> prepare($login_sql);
     $stmt -> execute([$username]);
-    $user_result= $stmt-> fetch()
+    $user_result= $stmt-> fetch();
 
     if (!$user_result)
-        echo "Username does not exist"
-    else if ($password === $user_result['password'])) {
+        echo "Username does not exist";
+    else if ($password === $user_result['adminPass']){
         $_SESSION['loggedin'] = true;
         echo "Logged in successfully";
         exit();
