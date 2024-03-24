@@ -9,4 +9,9 @@ $scriptName = $_SERVER['SCRIPT_NAME'];
 $path = str_replace($scriptName, '', $requestUri);
 $path = trim($path, '/');
 
+$pathParts = explode('/', $path);
+
+// first part of the path is assumed to be the page request
+$pageRequested = $pathParts[0] ?? null;
+
 ?>
