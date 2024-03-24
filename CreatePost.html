@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login-createpost.css">
+    <script src = "js/form-validation2.js"></script>
     <title>Create a Post</title>
 </head>
 
@@ -16,21 +17,33 @@
     </header>
     <main>
         <div id="createpost">
-            <form method="post" action ="#">
+            <form method="post" id="posting-form" action ="#">
                 <fieldset>
                     <legend>Create Post</legend> 
                     <p>
                     <label>Title:</label>
                     </p>
                     <p>
-                    <input type="text" id="postTitle" name="postTitle" required>
+                    <input type="text" id="postTitle" name="postTitle" required maxlength="">
                     </p>
                     <p>
-                    <label for="postContent">Content:</label>
                     </p>
                     <p>
                     <textarea id="postContent" name="postContent" rows="8" required></textarea>
                     </p>
+                    <label for="category">Category:</label>
+                        <select id="category" name="category" size="1" required>
+                        <option value="1">News & Current Events</option>
+                        <option value="2">Technology & Science</option>
+                        <option value="3">Entertainment & Media</option>
+                        <option value="4">Gaming</option>
+                        <option value="5">Lifestyle & Health</option>
+                        <option value="6">Arts & Creativity</option>
+                        <option value="7">Education & Careers</option>
+                        <option value="8">Hobbies & Interests</option>
+                        <option value="9">Sports & Fitness</option>
+                        <option value="10">Community & Social</option>
+                        </select>
                     <input type="submit"/>
 
                 </fieldset>
