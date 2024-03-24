@@ -30,6 +30,6 @@ header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 </head>
 <body>
     <h1>Oops! Page Not Found.</h1>
-    <a href="/">Go to Homepage</a>
+    <a href="/home.php">Go to Homepage</a>
 </body>
 </html>
