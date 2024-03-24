@@ -1,7 +1,7 @@
 <?php
 $posts=[];
 
-//require_once 'path/to/db_connection.php';
+require_once 'db_connection.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,9 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav>
         <h1>Talks@UBC</h1>
         <ul>
-            <li><a href="Home-loggedin.html">Home</a></li>
+            <li><a href="Home-loggedin.php">Home</a></li>
             <li><a href="Logout.php">Logout</a></li>
-            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Profile.php">Profile</a></li>
         </ul>
     </nav>
     <div class="main-content">
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="post">
                         <h2><?php echo htmlspecialchars($post['postTitle']); ?></h2>
                         <p><?php echo htmlspecialchars($post['postContent']); ?></p>
-                        <p class="post-category">Category: <span class="category"><?php echo htmlspecialchars($post['categoryName'])</span></p>
+                        <p class="post-category">Category: <span class="category"><?php echo htmlspecialchars($post['categoryName'])?></span></p>
                         <p class="username">Posted by: <?php echo htmlspecialchars($post['username']); ?></p>
                         <span class = "post-date"> <?php echo htmlspecialchars($post['postDate']); ?></span>
                     </div>

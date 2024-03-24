@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
    
     <header>
-        <a href="Home.html"><h1>Talks@UBC</h1></a>
+        <a href="Home.php"><h1>Talks@UBC</h1></a>
 
     </header>
     <main>
