@@ -5,7 +5,7 @@ function OpenCon()
     $dbhost = "localhost";
     $dbuser = "root";
     $dbpass = "";
-    $dbname = "db_49046584";
+    $dbname = "test";
     
     try {
         // Create a new PDO connection
