@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    $login_sql = "SELECT password FROM user WHERE username =  ?";
+    $login_sql = "SELECT userID, password FROM user WHERE username =  ?";
     $stmt = $pdo -> prepare($login_sql);
     $stmt -> execute([$username]);
     $user_result= $stmt-> fetch();
@@ -16,8 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     if (!$user_result)
         echo "Username does not exist";
     else if ($password === $user_result['password']) {
+
+        //fetch userID
+
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
+        $_SESSION['userID']= $userID;
 
         header("location:http://localhost/COSC360-MyDiscussion/home-loggedin.php");
         exit();

@@ -18,16 +18,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = OpenCon();
 
     
-    $post_sql = "INSERT INTO posts (postTitle,postContent,categoryID) VALUES (?,?,?)";
+    $post_sql = "INSERT INTO posts (postTitle,postContent,categoryID,postDate,userID) VALUES (?,?,?,?,?)";
     
     try {
         // Prepare the statement
         $stmt = $pdo->prepare($post_sql);
-        //Add statement for postDate as well
+
+        $userID = $_SESSION['userID'];
+
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $categoryID= $_POST['category'];
-        $stmt->execute([$postTitle, $postContent,$categoryID]);
+        $postDate = date("Y-m-d");
+        $stmt->execute([$postTitle, $postContent,$categoryID,$postDate,$userID]);
 
         
         echo "Post created successfully.";

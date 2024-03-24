@@ -47,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1> Talks@UBC </h1>
             <!-- Navigation links go here -->
             <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="LogIn.html">Login</a></li>
-                <li><a href = "Profile.html">Profile</a></li>
+                <li><a href="Home.php">Home</a></li>
+                <li><a href="LogIn.php">Login</a></li>
+                <li><a href = "Profile.php">Profile</a></li>
                 <li><a href = "adminLogin.php">Admin Login</a></li>
             </ul>
         </nav>
