@@ -21,4 +21,7 @@ if (!in_array($pageRequested, $validPages)) {
     exit;
 }
 
+// code to handle valid page requests goes here
+// include($pageRequested . '.php');
+
 ?>
