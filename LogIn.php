@@ -1,15 +1,21 @@
 <?php
-// require_once 'path/to/config/db_config.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['password'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    // we will have to add database code here to check if the username and password are valid
+    // i've hardcoded the username and password rn
+    // need to add the database stuff to check if the username and password are correct
     if ($username === "admin" && $password === "password") {
         $_SESSION['loggedin'] = true;
-        echo "Logged in successfully";
+        $_SESSION['admin'] = true;
+        echo "Logged in successfully as admin.";
+        exit();
+    } elseif ($username === "user" && $password === "password") {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['admin'] = false;
+        echo "Logged in successfully as user.";
         exit();
     } else {
         echo "Invalid username or password.";
