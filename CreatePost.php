@@ -1,37 +1,21 @@
 <?php
-require_once 'db_connection.php';
-session_start();
-
-$categories = [];
-
-// Always fetch categories to ensure the form is up to date.
-try {
-    $pdo = OpenCon();
-    $category_sql = "SELECT categoryID, categoryName FROM category ORDER BY categoryID";
-    $stmt = $pdo->query($category_sql);
-    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error fetching categories: " . $e->getMessage();
-}
+require_once 'path/to/db_connection.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = OpenCon();
 
     
-    $post_sql = "INSERT INTO posts (postTitle,postContent,categoryID,postDate,userID) VALUES (?,?,?,?,?)";
+    $post_sql = "INSERT INTO posts (postTitle,postContent,categoryID) VALUES (?,?,?)";
     
     try {
         // Prepare the statement
         $stmt = $pdo->prepare($post_sql);
-
-        $userID = $_SESSION['userID'];
-
+        //Add statement for postDate as well
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
-        $categoryID= $_POST['category'];
-        $postDate = date("Y-m-d");
-        $stmt->execute([$postTitle, $postContent,$categoryID,$postDate,$userID]);
+        $categoryID= $_POST['category']
+        $stmt->execute([$postTitle, $postContent,$categoryID]);
 
         
         echo "Post created successfully.";
@@ -59,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
    
     <header>
-        <a href="Home.php"><h1>Talks@UBC</h1></a>
+        <a href="Home.html"><h1>Talks@UBC</h1></a>
 
     </header>
     <main>
@@ -80,9 +64,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </p>
                     <label for="category">Category:</label>
                         <select id="category" name="category" size="1" required>
-                        <?php foreach ($categories as $category): ?>
-                            <option value="<?= htmlspecialchars($category['categoryID']); ?>"><?= htmlspecialchars($category['categoryName']); ?></option>
-                        <?php endforeach; ?>
+                        <option value="1">News & Current Events</option>
+                        <option value="2">Technology & Science</option>
+                        <option value="3">Entertainment & Media</option>
+                        <option value="4">Gaming</option>
+                        <option value="5">Lifestyle & Health</option>
+                        <option value="6">Arts & Creativity</option>
+                        <option value="7">Education & Careers</option>
+                        <option value="8">Hobbies & Interests</option>
+                        <option value="9">Sports & Fitness</option>
+                        <option value="10">Community & Social</option>
                         </select>
                     <input type="submit"/>
 
