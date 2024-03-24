@@ -3,8 +3,8 @@
 function OpenCon()
 {
     $dbhost = "localhost";
-    $dbuser = "49046584";
-    $dbpass = "49046584";
+    $dbuser = "root";
+    $dbpass = "";
     $dbname = "db_49046584";
     
     try {
