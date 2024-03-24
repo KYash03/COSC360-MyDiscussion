@@ -1,29 +1,21 @@
 <?php
-require_once 'db_connection.php';
-$pdo=openCon();
+// require_once 'path/to/config/db_config.php';
 session_start();
 // login checks
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'login') {
-
+if ($_SERVER["REQUEST_METHOD"] == "POST" && && isset($_POST['action']) && $_POST['action'] == 'login') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    $login_sql = "SELECT userID, password FROM user WHERE username =  ?";
+    $login_sql = "SELECT password FROM user WHERE username =  ?";
     $stmt = $pdo -> prepare($login_sql);
     $stmt -> execute([$username]);
-    $user_result= $stmt-> fetch();
+    $user_result= $stmt-> fetch()
 
     if (!$user_result)
-        echo "Username does not exist";
-    else if ($password === $user_result['password']) {
-
-        //fetch userID
-
+        echo "Username does not exist"
+    else if ($password === $user_result['password'])) {
         $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        $_SESSION['userID']= $user_result['userID'];
-
-        header("location:http://localhost/COSC360-MyDiscussion/home-loggedin.php");
+        echo "Logged in successfully";
         exit();
     } else {
         echo "Invalid username or password.";
@@ -31,23 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 }
 
 //signup email check & posting data to database
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'sign-up') {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && && isset($_POST['action']) && $_POST['action'] == 'sign-up') {
     $name = trim($_POST['name']);
     $lastname = trim($_POST['lastname']);
     $email = trim($_POST['email']);
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    $signup_sql1 = "SELECT COUNT(email) AS email_count FROM user WHERE email = ?";
+    $signup_sql1 = "SELECT COUNT(email) FROM user  WHERE email = ?";
     $stmt = $pdo->prepare($signup_sql1);
-    $stmt->execute([$email]);
-    $email_result = $stmt->fetch();
+    $signup_result = $stmt->execute([$email]);
 
-    if ($email_result['email_count'] > 0) {
+    if ($signup_result == 1) {
         echo "This email is already used.";
     } else {
         // Inserting new user data into the database
-        $signup_sql2 = "INSERT INTO user (firstName, lastName, email, username, password) VALUES (?, ?, ?, ?, ?)";
+        $signup_sql2 = "INSERT INTO user (name, lastname, email, username, password) VALUES (?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($signup_sql2);
         $success = $stmt->execute([$name, $lastname, $email, $username, $password]); 
 
