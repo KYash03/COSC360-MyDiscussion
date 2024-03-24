@@ -21,11 +21,17 @@
             <input type="search" placeholder="Search">
             <button>Search</button>
             <a href="CreatePost.php">
-                <button id="new-post-btn">New Post</button>
+                <button id="new-post-btn">New Post + </button>
             </a>
         </header>
         <main>
-            <div class="filter-dropdown">Sort by</div>
+            <!--Sorting-->
+            <select class="filter-dropdown" onchange="sortPosts(this.value);">
+                <option value="">Sort by</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="most_popular">Most Popular</option>
+            </select>            
             <!-- Dynamic posts will be loaded here -->
             <div class="post">
                 <h2>Post Title 1</h2>
