@@ -1,3 +1,37 @@
+<?php
+$posts=[];
+
+require_once 'db_connection.php';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $pdo = OpenCon();
+
+    //need to add a join so we can access username, posts table only have userID
+    //need to add a join to category table through categoryID
+
+    $sql = "SELECT posts.postID,posts.postTitle,posts.postDate,user.username,category.categoryName FROM posts LEFT JOIN user ON posts.userID =user.userID  LEFT JOIN categories ON post.categoryID=category.categoryID ORDER BY postDate DESC LIMIT 20;";
+
+    
+    
+    try {
+        // Prepare the statement
+        $result = $pdo->query($sql);
+        while($row = $result->fetch()){
+            $posts[] = $row;
+
+        }
+
+
+        
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+    // Close the connection
+    $pdo = null;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,26 +87,4 @@
         </div>
     </div>
 </body>
-
-<script>
-function performSearch(event) {
-    event.preventDefault(); // Prevent the form from submitting through the browser
-    var searchQuery = document.getElementById('searchQuery').value;
-
-    // Perform an AJAX request to search.php
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "search.php?searchQuery=" + encodeURIComponent(searchQuery), true);
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            // Replace the content of the 'main' section with the search results
-            document.querySelector('main').innerHTML = xhr.responseText;
-        } else {
-            // Handle request failure
-            console.error("Request failed.  Returned status of " + xhr.status);
-        }
-    };
-    xhr.send();
-}
-</script>
-
 </html>
