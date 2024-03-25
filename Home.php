@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +14,8 @@
             <!-- Navigation links go here -->
             <ul>
                 <li><a href="Home.php">Home</a></li>
-                <li><a href="LogIn.php">Login</a></li>
-                <li><a href = "Profile.php">Profile</a></li>
-                <li><a href = "adminLogin.php">Admin Login</a></li>
+                <li><a href="LogIn.html">Login</a></li>
+                <li><a href="Profile.html">Profile</a></li>
             </ul>
         </nav>
         <div class="main-content">
@@ -61,7 +61,7 @@ function performSearch(event) {
 
     // Perform an AJAX request to search.php
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "php/search.php?searchQuery=" + encodeURIComponent(searchQuery), true);
+    xhr.open("GET", "search.php?searchQuery=" + encodeURIComponent(searchQuery), true);
     xhr.onload = function () {
         if (xhr.status === 200) {
             // Replace the content of the 'main' section with the search results
