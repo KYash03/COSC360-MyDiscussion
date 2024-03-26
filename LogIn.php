@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
         $_SESSION['username'] = $username;
         $_SESSION['userID']= $user_result['userID'];
 
-        header("location:http://localhost/COSC360-MyDiscussion/home-loggedin.php");
+        header("location:http://localhost/COSC360-MyDiscussion/Home-merged.php");
         exit();
     } else {
         echo "Invalid username or password.";

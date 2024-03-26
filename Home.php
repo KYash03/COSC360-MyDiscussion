@@ -14,8 +14,8 @@
             <!-- Navigation links go here -->
             <ul>
                 <li><a href="Home.php">Home</a></li>
-                <li><a href="LogIn.html">Login</a></li>
-                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="LogIn.php">Login</a></li>
+                <li><a href="Profile.php">Profile</a></li>
             </ul>
         </nav>
         <div class="main-content">

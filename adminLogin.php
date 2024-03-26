@@ -18,8 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if ($password === $user_result['adminPass']){
         $_SESSION['loggedin'] = true;
         $_SESSION['admin'] = true;
-        echo "Logged in successfully";
-        
+        header("location:http://localhost/COSC360-MyDiscussion/Home-merged.php");
         exit();
     } else {
         echo "Invalid username or password.";
@@ -42,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
        
-        <a href="Home.html"><h1>Talks@UBC</h1></a>
+        <a href="Home-merged.php"><h1>Talks@UBC</h1></a>
 
     </header>
     <main>
