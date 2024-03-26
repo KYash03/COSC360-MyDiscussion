@@ -33,6 +33,13 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
                 <input type="search" id="searchQuery" name="searchQuery" placeholder="Search...">
                 <button type="submit">Search</button>
             </form>
+            <?php 
+            if($isUserLoggedIn){
+                echo '<a href="CreatePost.php">
+                <button id="new-post-btn">New Post</button>
+                </a>';
+            }
+            ?>
         </header>
         <main>
             <?php
@@ -47,7 +54,7 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
                 if ($isUserAdmin) {
                     echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
                     </a>";}
-                echo "<h2>" . htmlspecialchars($row['postTitle']) . "</h2>";
+                echo '<h2><a href="post.php?postID=' . $row['postID'] . '">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
                 echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
                 echo "<p class='username'>Posted by: Username " . htmlspecialchars($row['userID']) . "</p>";
                 echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
