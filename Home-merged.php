@@ -47,7 +47,13 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
             error_reporting(E_ALL);
             require_once 'db_connection.php';
             $pdo = OpenCon();
-            $sql = "SELECT * FROM posts ORDER BY postDate DESC";
+            
+            $sql = "SELECT p.postID,p.postTitle, p.postContent, p.postDate, u.username
+            FROM posts p
+            INNER JOIN user u ON p.userID = u.userID
+            ORDER BY postDate DESC 
+            LIMIT 20";
+
             foreach ($pdo->query($sql) as $row) {
 
                 echo "<div class='post'>";
@@ -56,7 +62,7 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
                     </a>";}
                 echo '<h2><a href="post.php?postID=' . $row['postID'] . '">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
                 echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
-                echo "<p class='username'>Posted by: Username " . htmlspecialchars($row['userID']) . "</p>";
+                echo "<p class='username'>Posted by: " . htmlspecialchars($row['username']) . "</p>";
                 echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
                 echo "</div>";
             }

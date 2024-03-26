@@ -61,7 +61,11 @@ if (isset($_GET['postID'])) {
         $commentDate = date("Y-m-d");
         try {
             $stmt = $pdo->prepare($post_sql);
-            $stmt->execute([$postID, $userID,$comment,$commentDate]);
+            if($stmt->execute([$postID, $userID,$comment,$commentDate])){
+                header("location: post.php?postID=" . $postID );
+                exit();
+            }
+            
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
