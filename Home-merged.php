@@ -45,7 +45,7 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 
                 echo "<div class='post'>";
                 if ($isUserAdmin) {
-                    echo  "<a href='#delete' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
+                    echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
                     </a>";}
                 echo "<h2>" . htmlspecialchars($row['postTitle']) . "</h2>";
                 echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
@@ -75,6 +75,18 @@ function performSearch(event) {
         }
     };
     xhr.send();
+}
+
+function deletePost(postID) {
+    if (confirm("Are you sure you want to delete this post?")) {
+        fetch(`php/delete_post.php?postID=${postID}`, { method: 'GET'})
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                window.location.reload(); // Reload to update the list of posts
+            })
+            .catch(error => console.error('Error:', error));
+    }
 }
 </script>
 </body>
