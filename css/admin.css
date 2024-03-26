@@ -44,3 +44,22 @@ body, html {
     margin-top: 1em;
     display: block;
 }
+/* Style for unvisited and visited post titles */
+.postTitle, .postTitle:visited {
+    text-decoration: none; /* Removes underline from the link */
+    color: #333; /* Set a neutral color or any color that fits your design */
+    font-weight: bold; /* Adds boldness to make it stand out */
+}
+
+/* Style for mouse hover over post titles */
+.postTitle:hover {
+    color: #005999; /* Change color on hover for interactivity */
+    text-decoration: none; /* Ensure underline does not appear on hover */
+}
+
+/* Style for active (clicked) post titles */
+.postTitle:active {
+    color: #0079d3; /* Optional: Change color when the link is being clicked */
+    text-decoration: none; /* Ensure underline does not appear on active link */
+}
+

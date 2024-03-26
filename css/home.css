@@ -130,4 +130,15 @@ footer {
 .category:hover {
     background-color: rgb(255, 210, 200); 
 }
+.postTitle {
+    text-decoration: none; /* Removes underline from the link */
+    color: #0079d3; /* Sets the link color. Choose a color that fits your design */
+    font-weight: bold; /* Makes the text bold for visibility */
+    transition: color 0.3s ease; /* Smooth transition for color change on hover */
+}
+
+.postTitle:hover {
+    color: #005999; /* Darker shade on hover for an interactive feel */
+}
+
 

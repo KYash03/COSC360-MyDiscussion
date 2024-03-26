@@ -92,7 +92,7 @@ if (isset($_GET['postID'])) {
     <nav>
         <h1>Talks@UBC</h1>
         <ul>
-            <li><a href="Home.php">Home</a></li>
+            <li><a href="Home-merged.php">Home</a></li>
             <?php if ($isUserLoggedIn): ?>
                 <li><a href="Profile.php">Profile</a></li>
                 <li><a href="Logout.php">Logout</a></li>

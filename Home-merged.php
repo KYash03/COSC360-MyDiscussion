@@ -48,19 +48,25 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
             require_once 'db_connection.php';
             $pdo = OpenCon();
             
-            $sql = "SELECT p.postID,p.postTitle, p.postContent, p.postDate, u.username
+            $sql = 'SELECT p.postID, p.postTitle, p.postContent, p.postDate, u.username, c.categoryName
             FROM posts p
             INNER JOIN user u ON p.userID = u.userID
-            ORDER BY postDate DESC 
-            LIMIT 20";
+            INNER JOIN category c ON p.categoryID = c.categoryID
+            ORDER BY p.postDate DESC 
+            LIMIT 20';
+            
 
             foreach ($pdo->query($sql) as $row) {
 
                 echo "<div class='post'>";
+                //or is userLogged in & userID matches.
+
                 if ($isUserAdmin) {
                     echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
                     </a>";}
-                echo '<h2><a href="post.php?postID=' . $row['postID'] . '">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
+                echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class= "postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
+                echo '<span class = "category" >'. $row["categoryName"] . '</span>';
+
                 echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
                 echo "<p class='username'>Posted by: " . htmlspecialchars($row['username']) . "</p>";
                 echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
