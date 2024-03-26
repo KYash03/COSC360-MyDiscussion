@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['loggedin'] = true;
         $_SESSION['admin'] = true;
         echo "Logged in successfully";
+        
         exit();
     } else {
         echo "Invalid username or password.";

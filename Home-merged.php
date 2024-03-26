@@ -1,7 +1,8 @@
 <?php
 session_start(); // Start the session.
 $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'];
-$isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin']
+$isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin']
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="<?php echo $isAdmin ? 'css/admin.css' : ($isUserLoggedIn ? 'css/home-loggedin.css' : 'css/home.css'); ?>">
+    <link rel="stylesheet" href="<?php echo $isUserLoggedIn ? 'css/home-loggedin.css' : 'css/home.css'; ?>">
 </head>
 <body>
 <div class="container">
@@ -41,10 +42,14 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin']
             $pdo = OpenCon();
             $sql = "SELECT * FROM posts ORDER BY postDate DESC";
             foreach ($pdo->query($sql) as $row) {
+
                 echo "<div class='post'>";
+                if ($isUserAdmin) {
+                    echo  "<a href='#delete' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
+                    </a>";}
                 echo "<h2>" . htmlspecialchars($row['postTitle']) . "</h2>";
                 echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
-                echo "<p class='username'>Posted by: Username " . htmlspecialchars($row['username']) . "</p>";
+                echo "<p class='username'>Posted by: Username " . htmlspecialchars($row['userID']) . "</p>";
                 echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
                 echo "</div>";
             }
