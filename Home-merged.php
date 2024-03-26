@@ -1,6 +1,7 @@
 <?php
 session_start(); // Start the session.
 $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'];
+$isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin']
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@ $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="<?php echo $isUserLoggedIn ? 'css/home-loggedin.css' : 'css/home.css'; ?>">
+    <link rel="stylesheet" href="<?php echo $isAdmin ? 'css/admin.css' : ($isUserLoggedIn ? 'css/home-loggedin.css' : 'css/home.css'); ?>">
 </head>
 <body>
 <div class="container">

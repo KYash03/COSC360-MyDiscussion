@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Username does not exist";
     else if ($password === $user_result['adminPass']){
         $_SESSION['loggedin'] = true;
+        $_SESSION['admin'] = true;
         echo "Logged in successfully";
         exit();
     } else {
