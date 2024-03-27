@@ -38,6 +38,7 @@ if ($results) {
         // Show delete button only if the logged-in user is the author of the post
         if ($isUserLoggedIn && $loggedInUserId == $row['userID']) {
             echo "<img src='../public/delete.png' width='32' height='32' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+
         }
         echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class="postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
         echo '<span class="category">' . htmlspecialchars($row["categoryName"]) . '</span>';
