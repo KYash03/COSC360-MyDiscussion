@@ -82,14 +82,18 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 
 <script>
 function performSearch(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the form from submitting through the browser
     var searchQuery = document.getElementById('searchQuery').value;
+
+    // Perform an AJAX request to search.php
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "search.php?searchQuery=" + encodeURIComponent(searchQuery), true);
+    xhr.open("GET", "php/search.php?searchQuery=" + encodeURIComponent(searchQuery), true);
     xhr.onload = function () {
-        if (xhr.status === 200) {
+        if (xhr.status === 200) {2
+            // Replace the content of the 'main' section with the search results
             document.querySelector('main').innerHTML = xhr.responseText;
         } else {
+            // Handle request failure
             console.error("Request failed.  Returned status of " + xhr.status);
         }
     };
