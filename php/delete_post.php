@@ -43,6 +43,6 @@ if (isset($_GET['postID']) && $isUserLoggedIn) {
     echo "<script>alert('Unauthorized access.');</script>";
 }
 
-echo "<script>window.location.href = '../Home-merged.php';</script>"; // Redirect back to the homepage
+// echo "<script>window.location.href = '../Home-merged.php';</script>"; // Redirect back to the homepage
 exit();
 ?>
