@@ -43,7 +43,6 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
         </header>
         <main>
         <?php
-                session_start(); // Ensure session start is at the beginning to access session variables.
                 require_once 'db_connection.php'; // Ensure the correct path to your database connection script.
                 $pdo = OpenCon();
 

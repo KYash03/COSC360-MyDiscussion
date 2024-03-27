@@ -6,7 +6,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'login') {
 
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $password = md5($_POST['password']);
 
     $login_sql = "SELECT userID, password FROM user WHERE username =  ?";
     $stmt = $pdo -> prepare($login_sql);
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     $lastname = trim($_POST['lastname']);
     $email = trim($_POST['email']);
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $password = md5($_POST['password']);
 
     $signup_sql1 = "SELECT COUNT(email) AS email_count FROM user WHERE email = ?";
     $stmt = $pdo->prepare($signup_sql1);

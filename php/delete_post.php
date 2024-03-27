@@ -29,7 +29,7 @@ if (isset($_GET['postID']) && $isUserLoggedIn) {
             $stmt->execute();
 
             if ($stmt->rowCount()) {
-                echo "<script>alert('Post deleted successfully.');</script>";
+                // echo "<script>alert('Post deleted successfully.');</script>";
             } else {
                 echo "<script>alert('Error deleting post.');</script>";
             }
