@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 <body>
     <header>
        
-        <a href="Home.html"><h1>Talks@UBC</h1></a>
+        <a href="Home-merged.php"><h1>Talks@UBC</h1></a>
 
     </header>
     <main>

@@ -113,7 +113,14 @@ if (isset($_GET['postID'])) {
 
                 ?>
                 <div class="post">
+                <?php 
+                    if($isUserAdmin){
+                        echo "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
+                        </a>";
+                    }
+                    ?>
                     <h2><?php echo htmlspecialchars($postDetails['postTitle']); ?></h2>
+
                     <span><?php echo htmlspecialchars($postDetails['categoryName']);?></span>
                     <p><?php echo htmlspecialchars($postDetails['postContent']); ?></p>
                 </div>

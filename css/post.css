@@ -92,29 +92,44 @@ footer {
   padding: 1em;
   text-align: center;
 }
-
 .comments-section {
-  margin: 1em 0;
+  margin: 2em 1em; /* More vertical spacing */
   padding: 1em;
   background-color: #f0f0f0;
-  border-radius: 5px;
+  border-radius: 10px; /* Slightly larger radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Softer shadow */
 }
 
 .comment {
-  padding: 0.5em;
-  margin-bottom: 0.5em;
+  padding: 1em;
+  margin-bottom: 1em;
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Consistent with comments-section */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  line-height: 1.6; /* Improved readability */
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.comment:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .add-comment textarea {
-  width: calc(100% - 1em);
+  width: 100%;
   margin-top: 1em;
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.75em;
+  border: 1px solid #bbb; /* Lighter border color */
+  border-radius: 10px;
   height: 100px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.add-comment textarea:focus {
+  border-color: #0079d3; /* Focus color */
+  outline: none; /* Removing default focus outline */
 }
 
 .add-comment button {
@@ -122,13 +137,16 @@ footer {
   width: 100%;
   padding: 10px 0;
   margin-top: 10px;
-  background-color: #007bff;
+  background-color: #0079d3; /* Matching header button color */
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Matching other elements */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .add-comment button:hover {
-  background-color: #0056b3;
+  background-color: #005999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
