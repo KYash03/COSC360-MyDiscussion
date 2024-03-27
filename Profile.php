@@ -2,6 +2,9 @@
 require_once 'db_connection.php';
 session_start();
 $username = $_SESSION['username'];
+
+$sql='SELECT picture FROM user WHERE username = ?';
+
 ?>
 
 <!DOCTYPE html>
@@ -30,11 +33,10 @@ $username = $_SESSION['username'];
             </header>
             <main>
                 <div class="profile">
-                    <img src="public/user-profile.png" alt="user-img" class="user-img">
+                    <?php
+                     echo '<img src=' . $picture .'alt="user-img" class="user-img">'
+                    ?>
                     <h2><?php echo $username?></h2>
-                    <div class="bio">
-                        USER'S BIO
-                    </div>
                     <div class ="photo-upload">
                         <form method="post">
                             <p>
