@@ -62,12 +62,13 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
                 //or is userLogged in & userID matches.
                 $isUserAdmin = TRUE; //THIS  SHOULD BE REMOVED IN THE ACTUAL IMPLEMENTATION.
 
+                //IZGI's old code
                 // if ($isUserAdmin) {
                 //     echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
                 //     </a>";}
 
                 if ($isUserAdmin) {
-                    echo "<img src='public/delete.png' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+                    echo "<img src='public/delete.png' alt='Delete' class='delete-icon' width='32' height='32  onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
                 }
 
                 echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class= "postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
