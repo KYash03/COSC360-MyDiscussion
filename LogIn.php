@@ -13,9 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     $stmt -> execute([$username]);
     $user_result= $stmt-> fetch();
 
-    if (!$user_result)
+    if (!$user_result){
         echo "Username does not exist";
-    else if ($password === $user_result['password']) {
+
+    }else if ($password === $user_result['password']) {
 
         //fetch userID
 
