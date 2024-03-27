@@ -4,18 +4,23 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../db_connection.php';
-
+session_start();
 $pdo = OpenCon();
 
 // Retrieve the search query from GET parameters
 $searchQuery = isset($_GET['searchQuery']) ? "%" . $_GET['searchQuery'] . "%" : '';
 $searchQuery = $pdo->quote($searchQuery);
 
+// Assuming you have these session variables set correctly
+$isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'];
+$loggedInUserId = $_SESSION['userID'] ?? null;
+
 // Adjust your SQL query as needed to fetch additional fields like category name and username
 $sql = "SELECT p.*, u.username, c.categoryName FROM posts p 
         INNER JOIN user u ON p.userID = u.userID 
         INNER JOIN category c ON p.categoryID = c.categoryID 
-        WHERE postTitle LIKE $searchQuery OR postContent LIKE $searchQuery";
+        WHERE (postTitle LIKE $searchQuery OR postContent LIKE $searchQuery) 
+        ORDER BY p.postDate DESC";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -30,7 +35,10 @@ if ($results) {
     echo "<div class='search-results'>";
     foreach ($results as $row) {
         echo "<div class='post'>";
-        echo "<img src='public/delete.png' width = '32' height = '32' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+        // Show delete button only if the logged-in user is the author of the post
+        if ($isUserLoggedIn && $loggedInUserId == $row['userID']) {
+            echo "<img src='../public/delete.png' width='32' height='32' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+        }
         echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class="postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
         echo '<span class="category">' . htmlspecialchars($row["categoryName"]) . '</span>';
         echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
