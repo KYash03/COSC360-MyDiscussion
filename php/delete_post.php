@@ -4,7 +4,7 @@ session_start();
 require_once '../db_connection.php'; // Adjust the path as needed.
 $pdo = OpenCon();
 
-$isUserAdmin = TRUE;//REMOVE THIS WHEN NOT TESTING
+// $isUserAdmin = TRUE;//REMOVE THIS WHEN NOT TESTING
 
 if (isset($_GET['postID']) && ($isUserLoggedIn || $isUserAdmin)) {
     $postID = $_GET['postID'];

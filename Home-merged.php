@@ -42,47 +42,38 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
             ?>
         </header>
         <main>
-            <?php
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
-            require_once 'db_connection.php';
-            $pdo = OpenCon();
-            
-            $sql = 'SELECT p.postID, p.postTitle, p.postContent, p.postDate, u.username, c.categoryName
-            FROM posts p
-            INNER JOIN user u ON p.userID = u.userID
-            INNER JOIN category c ON p.categoryID = c.categoryID
-            ORDER BY p.postDate DESC 
-            LIMIT 20';
-            
+        <?php
+                session_start(); // Ensure session start is at the beginning to access session variables.
+                require_once 'db_connection.php'; // Ensure the correct path to your database connection script.
+                $pdo = OpenCon();
 
-            foreach ($pdo->query($sql) as $row) {
+                // Assuming you have session variables to check if a user is logged in and if they are an admin.
+                $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'];
+                $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
+                $loggedInUserId = $_SESSION['userID'] ?? null; // Replace 'userID' with the actual session variable that holds the logged-in user's ID.
 
-                echo "<div class='post'>";
-                //or is userLogged in & userID matches.
-                $isUserAdmin = TRUE; //THIS  SHOULD BE REMOVED IN THE ACTUAL IMPLEMENTATION.
+                $sql = 'SELECT p.postID, p.postTitle, p.postContent, p.postDate, u.username, c.categoryName, p.userID as postUserID
+                        FROM posts p
+                        INNER JOIN user u ON p.userID = u.userID
+                        INNER JOIN category c ON p.categoryID = c.categoryID
+                        ORDER BY p.postDate DESC 
+                        LIMIT 20';
 
-                // if ($isUserAdmin) {
-                //     echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
-                //     </a>";}
-
-                if ($isUserAdmin) {
-                    echo "<img src='public/delete.png' width = '32' height = '32' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+                foreach ($pdo->query($sql) as $row) {
+                    echo "<div class='post'>";
+                    // Display the delete button if the user is logged in and is the author of the post or is an admin.
+                    if (($isUserLoggedIn && $loggedInUserId == $row['postUserID']) || $isUserAdmin) {
+                        echo "<img src='public/delete.png' width='32' height='32' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+                    }
+                    echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class="postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
+                    echo '<span class="category">' . htmlspecialchars($row["categoryName"]) . '</span>';
+                    echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
+                    echo "<p class='username'>Posted by: " . htmlspecialchars($row['username']) . "</p>";
+                    echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
+                    echo "</div>";
                 }
+?>
 
-                echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class= "postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
-                echo '<span class = "category" >'. $row["categoryName"] . '</span>';
-
-                echo "<p>" . htmlspecialchars($row['postContent']) . "</p>";
-                echo "<p class='username'>Posted by: " . htmlspecialchars($row['username']) . "</p>";
-                echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
-                echo "</div>";
-            }
-
-
-            
-
-            ?>
         </main>
         <footer>
             <p>Talks@UBC</p>
