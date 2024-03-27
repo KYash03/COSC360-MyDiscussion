@@ -60,10 +60,16 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 
                 echo "<div class='post'>";
                 //or is userLogged in & userID matches.
+                $isUserAdmin = TRUE; //THIS  SHOULD BE REMOVED IN THE ACTUAL IMPLEMENTATION.
+
+                // if ($isUserAdmin) {
+                //     echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
+                //     </a>";}
 
                 if ($isUserAdmin) {
-                    echo  "<a href='php/delete_post.php' class='delete-icon'><img src='public/delete.png' alt='Delete' width='32' height='32'/>
-                    </a>";}
+                    echo "<img src='public/delete.png' alt='Delete' class='delete-icon' onclick='deletePost(" . $row['postID'] . ")' style='cursor:pointer;'>";
+                }
+
                 echo '<h2><a href="post.php?postID=' . $row['postID'] . '" class= "postTitle">' . htmlspecialchars($row['postTitle']) . '</a></h2>';
                 echo '<span class = "category" >'. $row["categoryName"] . '</span>';
 
@@ -72,6 +78,10 @@ $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
                 echo "<span class='post-date'>" . htmlspecialchars($row['postDate']) . "</span>";
                 echo "</div>";
             }
+
+
+            
+
             ?>
         </main>
         <footer>
@@ -89,7 +99,7 @@ function performSearch(event) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "php/search.php?searchQuery=" + encodeURIComponent(searchQuery), true);
     xhr.onload = function () {
-        if (xhr.status === 200) {2
+        if (xhr.status === 200) {
             // Replace the content of the 'main' section with the search results
             document.querySelector('main').innerHTML = xhr.responseText;
         } else {
@@ -114,3 +124,6 @@ function deletePost(postID) {
 </script>
 </body>
 </html>
+
+
+
