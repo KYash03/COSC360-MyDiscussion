@@ -19,7 +19,7 @@ $username = $_SESSION['username'];
         <nav>
             <a href = "Home.php"><h1>Talks@UBC</h1></a>
             <ul>
-                <li><a href="Home.php">Home</a></li>
+                <li><a href="Home-merged.php">Home</a></li>
                 <li><a href="LogOut.php">Log Out</a></li>
             </ul>
         </nav>
