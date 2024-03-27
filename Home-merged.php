@@ -106,7 +106,7 @@ function deletePost(postID) {
         fetch(`php/delete_post.php?postID=${postID}`, { method: 'GET'})
             .then(response => response.text())
             .then(data => {
-                alert(data);
+                // alert(data);
                 window.location.reload(); // Reload to update the list of posts
             })
             .catch(error => console.error('Error:', error));
