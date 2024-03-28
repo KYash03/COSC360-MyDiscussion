@@ -5,6 +5,7 @@ $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'];
 $isUserAdmin = isset($_SESSION['admin']) && $_SESSION['admin'];
 $comments = [];
 $postDetails = [];
+$breadcrumbs = ['<li><a href="Home-merged.php">Home</a></li>'];
 
 if (isset($_GET['postID'])) {
     $postID = $_GET['postID'];
@@ -27,6 +28,16 @@ if (isset($_GET['postID'])) {
     } catch(PDOException $e) {
         echo "Error fetching comments: " . $e->getMessage();
     }
+
+    if (isset($postDetails['categoryName'])) {
+        $breadcrumbs[] = '<li><a href="category.php?category=' . urlencode($postDetails['categoryName']) . '">' . htmlspecialchars($postDetails['categoryName']) . '</a></li>';
+    }
+
+    // Always add the current post to the breadcrumbs
+    if (isset($postDetails['postTitle'])) {
+        $breadcrumbs[] = '<li>' . htmlspecialchars($postDetails['postTitle']) . '</li>';
+    }
+    
 
     //Fetch comments
 
@@ -102,16 +113,24 @@ if (isset($_GET['postID'])) {
             <?php endif; ?>
         </ul>
     </nav>
+
+    
+
+
+
         <div class="main-content">
             <header>
                 <input type="search" placeholder="  Search">
                 <button>Search</button>
             </header>
             <main>
-                <?php
-                    
-
-                ?>
+            <div class="breadcrumbs-container">
+                <nav id='breadcrumb' aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <?php echo implode('', $breadcrumbs); ?>
+                    </ol>
+                </nav>
+            </div>
                 <div class="post">
                 <?php 
                     if($isUserAdmin){

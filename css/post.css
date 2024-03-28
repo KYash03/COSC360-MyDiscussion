@@ -150,3 +150,75 @@ footer {
   background-color: #005999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+/* Existing styles for body, html, .container, nav, .main-content, header, and other elements remain unchanged */
+/* Breadcrumbs styling */
+/* Breadcrumbs container styling */
+.breadcrumbs-container {
+  background-color: #ffffff; /* Set background to white */
+  padding: 0.5em 1em; /* Padding on top and bottom, a bit on the sides */
+  margin-left: calc(10rem + 1em); /* Align left edge with the main content area */
+  margin-right: 1em; /* Consistent space on the right */
+  margin-top: 1em; /* Space above the breadcrumb */
+  margin-bottom: 1em; /* Space below the breadcrumb */
+  border-radius: 4px; /* Slight rounding of corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+/* Breadcrumb list styling */
+.breadcrumb {
+  list-style: none; /* Remove list bullets */
+  display: flex; /* Align breadcrumb items in a row */
+  align-items: center; /* Center items vertically */
+  overflow-x: auto; /* Allows horizontal scrolling if too wide */
+  margin: 0;
+  padding: 0;
+}
+
+/* Breadcrumbs container styling */
+.breadcrumbs-container {
+  /* Remove the background color by setting it to transparent or matching it with the page background */
+  background-color: transparent;
+  padding: 0.5em 1em; /* Adjust padding as needed */
+  margin-top: 1em; /* Space from the top element */
+  margin-bottom: 1em; /* Space from the bottom element */
+  /* Remove overflow and width properties to allow the breadcrumbs to expand naturally */
+}
+
+/* Breadcrumb list styling */
+.breadcrumb {
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+  /* Remove flex-wrap and overflow properties to avoid scrolling */
+}
+
+/* Breadcrumb item styling */
+.breadcrumb li {
+  display: inline; /* Keep items in line */
+  color: #007bff; /* Theme blue for breadcrumb items */
+  font-size: 0.875em;
+}
+
+/* Breadcrumb separator styling */
+.breadcrumb li + li:before {
+  content: "/"; /* Separator character */
+  color: #6c757d; /* Color for the separator */
+  padding: 0 0.5em; /* Padding around the separator */
+}
+
+/* Breadcrumb link styling */
+.breadcrumb li a {
+  color: inherit; /* Inherit color from li */
+  text-decoration: none; /* No underline */
+}
+
+/* Breadcrumb link hover effect */
+.breadcrumb li a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Current breadcrumb item styling */
+.breadcrumb li:last-child {
+  color: #495057; /* Darker color for the current page */
+  pointer-events: none; /* Non-interactive */
+}

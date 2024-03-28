@@ -57,25 +57,25 @@ header input[type="search"] {
     flex: 1;
     padding: 0.5em;
     margin-right: 1em;
-    border: none; /* Removes the default border */
-    border-radius: 25px; /* Gives the search box rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-    font-size: 1em; /* Adjust font size as needed */
+    border: none; 
+    border-radius: 25px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-size: 1em; 
 }
 header button {
     padding: 0.5em 1em;
     border: none;
-    border-radius: 25px; /* Rounded corners for the button */
-    background-color: #0079d3; /* A blue background for the button */
+    border-radius: 25px; 
+    background-color: #0079d3; 
     color: white;
     font-weight: bold;
-    cursor: pointer; /* Changes the cursor to indicate it's clickable */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Consistent shadow with the search box */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    cursor: pointer; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease; 
 }
 
 header button:hover {
-    background-color: #005999; /* Darker shade of blue on hover */
+    background-color: #005999; 
 }
 
 main {
@@ -131,14 +131,12 @@ footer {
     background-color: rgb(255, 210, 200); 
 }
 .postTitle {
-    text-decoration: none; /* Removes underline from the link */
-    color: #0079d3; /* Sets the link color. Choose a color that fits your design */
-    font-weight: bold; /* Makes the text bold for visibility */
-    transition: color 0.3s ease; /* Smooth transition for color change on hover */
+    text-decoration: none; 
+    color: #0079d3; 
+    font-weight: bold; 
+    transition: color 0.3s ease; 
 }
 
 .postTitle:hover {
-    color: #005999; /* Darker shade on hover for an interactive feel */
+    color: #005999; 
 }
-
-
