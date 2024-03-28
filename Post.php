@@ -30,7 +30,7 @@ if (isset($_GET['postID'])) {
 
     //Fetch comments
 
-    $fetch_comments_sql = 'SELECT c.comment, c.commentDate, u.username
+    $fetch_comments_sql = 'SELECT c.commentID,c.comment, c.commentDate,c.userID, u.username
     FROM comments c
     INNER JOIN user u ON c.userID = u.userID
     WHERE c.postID = ?';
@@ -132,6 +132,11 @@ if (isset($_GET['postID'])) {
                             <?php echo htmlspecialchars($comment['comment']);?>
                             </p>
                             <span class = "comment-date"> <?php echo htmlspecialchars($comment['commentDate']); ?></span>
+                            <p>
+                            <?php if ($isUserLoggedIn && ($isUserAdmin || $_SESSION['userID'] == $comment['userID'])): ?>
+                            <a href="delete_comment.php?commentID="<?php echo htmlspecialchars($comment['commentID']); ?>&postID=<?php echo htmlspecialchars($postID); ?> class="delete-comment-link">Delete</a>
+                            <?php endif; ?>
+                            </p>
                         </div>
                     <?php endforeach; ?>
                     <div class="add-comment">
