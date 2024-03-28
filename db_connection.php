@@ -2,9 +2,9 @@
 <?php
 function OpenCon()
 {
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
+    $dbhost = "cosc360.ok.ubc.ca";
+    $dbuser = "49046584";
+    $dbpass = "49046584";
     $dbname = "db_49046584";
     
     try {

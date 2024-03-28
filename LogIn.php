@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
         $_SESSION['username'] = $username;
         $_SESSION['userID']= $user_result['userID'];
 
-        header("location:Home-merged.php");
+        header("location:");
         exit();
     } else {
         echo "Invalid username or password.";
