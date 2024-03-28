@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if ($password === $user_result['adminPass']){
         $_SESSION['loggedin'] = true;
         $_SESSION['admin'] = true;
-        header("location:http://localhost/COSC360-MyDiscussion/Home-merged.php");
+        header("location:http://cosc360.ok.ubc.ca/izgiko/COSC360-MyDiscussion/Home-merged.php");
         exit();
     } else {
         echo "Invalid username or password.";
